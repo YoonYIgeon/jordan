@@ -8,6 +8,7 @@ import Image from "next/image";
 import clsx from "clsx";
 import { Link } from "next-view-transitions";
 import { Button } from "@/ui/components/button";
+import { ApplicateBattle } from "@/ui/components/applicate-battle";
 
 type AvatarProps = {
   src: string;
@@ -75,6 +76,13 @@ const guests: ProfileProps[] = Array.from({ length: 8 }, (_, index) => ({
   avatarProps: { src: `https://picsum.photos/id/${index + 108}/300/400` },
 }));
 
+const matches = [
+  { label: "16강", time: "12:00 - 14:00" },
+  { label: "8강", time: "14:00 - 16:00" },
+  { label: "4강", time: "16:00 - 18:00" },
+  { label: "결승", time: "18:00 - 20:00" },
+];
+
 export default function IrlInfo() {
   return (
     <div className="flex flex-col">
@@ -117,10 +125,30 @@ export default function IrlInfo() {
               ))}
             </div>
           </div>
+          <div className="flex flex-col gap-5">
+            <h2 className="text-[24px] font-black text-center border-t-4 border-b-1 py-1">
+              타임 테이블
+            </h2>
+            <div className="py-5 grid grid-cols-2 gap-5 px-3.5">
+              {matches.map((match) => (
+                <div className="flex flex-col items-start" key={match.label}>
+                  <p className="font-black text-[12px]">{match.label}</p>
+                  <p className="font-medium text-[20px]">{match.time}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-        <Link href="/battles">
-          <Button>배틀 신청하기</Button>
-        </Link>
+        <div className="flex flex-col gap-3">
+          <ApplicateBattle />
+          <Link href="/battles">
+            <Button reverse>
+              CHOREOGRAPHY
+              <br />
+              WORKSHOP
+            </Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

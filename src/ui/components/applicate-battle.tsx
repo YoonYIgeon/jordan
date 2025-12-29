@@ -1,0 +1,102 @@
+"use client";
+
+import { useState } from "react";
+import { Button } from "./button";
+import { FullDialog } from "./full-dialog";
+import { Checkbox } from "./checkbox";
+import Logo from "@/ui/svg/logo.svg";
+import { Link } from "next-view-transitions";
+
+export const ApplicateBattle = ({}) => {
+  const [open, setOpen] = useState(false);
+  const [completed, setCompleted] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>배틀 신청하기</Button>
+      <FullDialog open={open} onClose={() => setOpen(false)}>
+        {completed ? (
+          <>
+            <div className="flex flex-col flex-grow-1 items-center justify-center gap-6">
+              <Logo width={100} height={100} />
+              배틀 신청이 완료되었습니다.
+            </div>
+            <Link href="/menu">
+              <Button>메뉴로 돌아가기</Button>
+            </Link>
+          </>
+        ) : (
+          <div className="flex flex-col gap-5">
+            <h4 className="font-black text-[24px] text-center">배틀 신청서</h4>
+            <div className="flex flex-col border-1">
+              <div className="border-b-1 flex justify-between px-1.5 py-1">
+                <div className="font-black text-[20px] whitespace-nowrap">
+                  이름
+                </div>
+                <input
+                  type="text"
+                  className="w-full text-right"
+                  placeholder="이름을 입력해주세요."
+                />
+              </div>
+              <div className="border-b-1 flex justify-between px-1.5 py-1">
+                <div className="font-black text-[20px] whitespace-nowrap">
+                  생년월일
+                </div>
+                <input
+                  type="text"
+                  className="w-full text-right"
+                  placeholder="생년월일을 입력해주세요."
+                />
+              </div>
+              <div className="border-b-1 flex justify-between px-1.5 py-1">
+                <div className="font-black text-[20px] whitespace-nowrap">
+                  휴대폰
+                </div>
+                <input
+                  type="text"
+                  className="w-full text-right"
+                  placeholder="휴대폰을 입력해주세요."
+                />
+              </div>
+              <div className="border-b-1 flex justify-between px-1.5 py-1">
+                <div className="font-black text-[20px] whitespace-nowrap">
+                  배틀 장르
+                </div>
+                <input
+                  type="text"
+                  className="w-full text-right"
+                  placeholder="배틀 장르를 입력해주세요."
+                />
+              </div>
+              <div className="border-b-1 flex flex-col px-1.5 py-1">
+                <div className="font-black text-[20px] whitespace-nowrap">
+                  인스타그램 아이디
+                </div>
+                <textarea
+                  className="w-full"
+                  placeholder="인스타그램 아이디를 입력해주세요."
+                />
+              </div>
+              <div className="border-b-1 flex flex-col px-1.5 py-1">
+                <div className="font-black text-[20px] whitespace-nowrap">
+                  WHAT DO YOU WANT
+                </div>
+                <textarea className="w-full" placeholder="WHAT DO YOU WANT" />
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <Checkbox>
+                <a className="underline ">개인정보 수집</a>에 동의합니다.
+              </Checkbox>
+              <span className="text-[12px]">
+                필수 항목을 모두 입력해주세요.
+              </span>
+            </div>
+            <Button onClick={() => setCompleted(true)}>신청하기</Button>
+          </div>
+        )}
+      </FullDialog>
+    </>
+  );
+};

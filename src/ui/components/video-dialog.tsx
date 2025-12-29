@@ -1,13 +1,13 @@
 import React, { ReactNode, useEffect, useRef } from "react";
 import Times from "@/ui/svg/times.svg";
 
-type FullDialogProps = {
+type VideoDialogProps = {
   open: boolean;
   onClose?: () => void;
   children: ReactNode;
 };
 
-export const FullDialog = ({ open, onClose, children }: FullDialogProps) => {
+export const VideoDialog = ({ open, onClose, children }: VideoDialogProps) => {
   const dialogRef = useRef<HTMLDivElement>(null);
 
   // Prevent background scroll when dialog is open
@@ -50,27 +50,27 @@ export const FullDialog = ({ open, onClose, children }: FullDialogProps) => {
       aria-modal="true"
       aria-hidden={!open}
     >
+      {onClose && (
+        <div className="flex justify-end">
+          <button
+            className="p-5 text-2xl text-white"
+            onClick={onClose}
+            aria-label="Close dialog"
+          >
+            <Times className="size-5" />
+          </button>
+        </div>
+      )}
       <div
-        className={`flex dialog h-full flex-col ${
+        className={`flex video-dialog h-full flex-col ${
           open
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
         }`}
       >
-        {onClose && (
-          <div className="flex justify-end">
-            <button
-              className="p-5 text-2xl text-white"
-              onClick={onClose}
-              aria-label="Close dialog"
-            >
-              <Times className="size-5" />
-            </button>
-          </div>
-        )}
         <div
           ref={dialogRef}
-          className={`w-full px-3 pb-7 h-full overflow-y-auto flex-grow-1 flex flex-col justify-center transition-transform duration-400 ${
+          className={`w-full h-full overflow-y-auto flex-grow-1 flex flex-col justify-center transition-transform duration-400 pb-15 ${
             open
               ? "scale-100 opacity-100 translate-y-0"
               : "scale-95 opacity-0 translate-y-3"

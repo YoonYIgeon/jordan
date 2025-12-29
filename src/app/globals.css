@@ -25,6 +25,10 @@ main:not(.dark) {
   background: var(--background);
   color: var(--foreground);
 }
+.video-dialog {
+  --background: transparent;
+  background: var(--background);
+}
 
 body {
   background: var(--background);

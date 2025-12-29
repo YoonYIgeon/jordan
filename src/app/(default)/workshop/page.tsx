@@ -11,7 +11,7 @@ export default function Workshop() {
   return (
     <div className="flex flex-col">
       <HistoryBack />
-      <div className="flex flex-col gap-10 px-3 pb-3">
+      <div className="flex flex-col gap-10 px-3">
         <div className="flex flex-col flex-grow-1 items-center justify-center gap-7">
           <Logo className="w-20" />
           <ChoreoGraphyWorkshop width={239} className="mx-auto" />

@@ -3,6 +3,38 @@
 import ArrowBottom from "@/ui/svg/arrow_bottom.svg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { VideoDialog } from "./video-dialog";
+import { Button } from "./button";
+
+const Thumbnail = ({ src }: { src: string }) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <div className="aspect-[0.64]">
+        <Image
+          onClick={() => setOpen(true)}
+          src={src}
+          alt="video"
+          className="w-full h-full object-cover"
+          width={240}
+          height={374}
+        />
+      </div>
+      <VideoDialog open={open} onClose={() => setOpen(false)}>
+        <div className="aspect-[320/498]">
+          <Image
+            src={src}
+            alt="video"
+            className="w-full h-full object-cover"
+            width={320}
+            height={498}
+          />
+        </div>
+      </VideoDialog>
+    </>
+  );
+};
 
 export default function Videos() {
   const [open, setOpen] = useState(false);
@@ -22,20 +54,14 @@ export default function Videos() {
         <div className="-mx-3 grid grid-cols-3">
           {Array.from({ length: 21 }).map((_, index) => {
             const src = `https://picsum.photos/id/${index + 500}/300/400`;
-            return (
-              <div className="aspect-[0.64]" key={index}>
-                <Image
-                  src={src}
-                  alt="video"
-                  className="w-full h-full object-cover"
-                  width={240}
-                  height={374}
-                />
-              </div>
-            );
+            return <Thumbnail src={src} key={index} />;
           })}
         </div>
       )}
+
+      <div className="fixed bottom-3 left-3 right-3">
+        <Button className="border-none">워크샵 신청하기</Button>
+      </div>
     </>
   );
 }

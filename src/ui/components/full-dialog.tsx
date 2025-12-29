@@ -43,34 +43,42 @@ export const FullDialog = ({ open, onClose, children }: FullDialogProps) => {
 
   return (
     <div
-      className={`fixed flex flex-col inset-0 z-50 justify-center transition-all duration-400 ${
+      className={`fixed p-5 flex flex-col inset-0 z-50 justify-center transition-all duration-400 ${
         open
-          ? "pointer-events-auto bg-black opacity-100"
-          : "pointer-events-none bg-black/0 opacity-0"
+          ? "pointer-events-auto bg-black/50 backdrop-blur opacity-100"
+          : "pointer-events-none bg-black/0 backdrop-blur-0 opacity-0"
       }`}
       aria-modal="true"
       aria-hidden={!open}
     >
-      {onClose && (
-        <div className="flex justify-end">
-          <button
-            className="p-5 text-2xl text-white"
-            onClick={onClose}
-            aria-label="Close dialog"
-          >
-            <Times className="size-5" />
-          </button>
-        </div>
-      )}
       <div
-        ref={dialogRef}
-        className={`w-full px-7 pb-7 h-full flex flex-col justify-center transition-transform duration-400 ${
+        className={`flex dialog h-full flex-col ${
           open
-            ? "scale-100 opacity-100 translate-y-0"
-            : "scale-95 opacity-0 translate-y-3"
+            ? "pointer-events-auto bg-blue opacity-100"
+            : "pointer-events-none bg-blue/0 opacity-0"
         }`}
       >
-        {children}
+        {onClose && (
+          <div className="flex justify-end">
+            <button
+              className="p-5 text-2xl text-white"
+              onClick={onClose}
+              aria-label="Close dialog"
+            >
+              <Times className="size-5" />
+            </button>
+          </div>
+        )}
+        <div
+          ref={dialogRef}
+          className={`w-full px-3 pb-7 h-full overflow-y-auto flex-grow-1 flex flex-col justify-center transition-transform duration-400 ${
+            open
+              ? "scale-100 opacity-100 translate-y-0"
+              : "scale-95 opacity-0 translate-y-3"
+          }`}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );

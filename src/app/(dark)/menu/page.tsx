@@ -42,9 +42,11 @@ export default function Menu() {
             <InfraredBattle width={171} height={38} className="mx-auto" />
           </MenuButton>
         </Link>
-        <MenuButton>
-          <ChoreoGraphyWorkshop width={217} height={60} className="mx-auto" />
-        </MenuButton>
+        <Link href="/workshop">
+          <MenuButton>
+            <ChoreoGraphyWorkshop width={217} height={60} className="mx-auto" />
+          </MenuButton>
+        </Link>
         <MenuButton>
           <ViewInfrared width={171} height={38} className="mx-auto" />
         </MenuButton>

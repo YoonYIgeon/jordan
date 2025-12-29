@@ -19,6 +19,13 @@ main:not(.dark) {
   color: var(--foreground);
 }
 
+.dialog {
+  --background: #000000;
+  --foreground: #ff3b49;
+  background: var(--background);
+  color: var(--foreground);
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

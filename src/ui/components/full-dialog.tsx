@@ -4,10 +4,11 @@ import Times from "@/ui/svg/times.svg";
 type FullDialogProps = {
   open: boolean;
   onClose?: () => void;
+  reverse?: boolean;
   children: ReactNode;
 };
 
-export const FullDialog = ({ open, onClose, children }: FullDialogProps) => {
+export const FullDialog = ({ open, onClose, reverse, children }: FullDialogProps) => {
   const dialogRef = useRef<HTMLDivElement>(null);
 
   // Prevent background scroll when dialog is open
@@ -42,25 +43,25 @@ export const FullDialog = ({ open, onClose, children }: FullDialogProps) => {
 
   return (
     <div
-      className={`fixed p-5 flex flex-col inset-0 z-50 justify-center transition-all duration-400 ${
-        open
-          ? "pointer-events-auto bg-black/50 backdrop-blur opacity-100"
-          : "pointer-events-none bg-black/0 backdrop-blur-0 opacity-0"
-      }`}
+      className={`fixed max-w-md mx-auto p-5 flex flex-col inset-0 z-50 justify-center transition-all duration-400 ${open
+        ? "pointer-events-auto bg-black/50 backdrop-blur opacity-100"
+        : "pointer-events-none bg-black/0 backdrop-blur-0 opacity-0"
+        }`}
       aria-modal="true"
       aria-hidden={!open}
     >
       <div
-        className={`flex dialog h-full flex-col ${
-          open
+        className={`flex dialog h-full flex-col
+          ${reverse ? "reverse" : ""}
+          ${open
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
-        }`}
+          }`}
       >
         {onClose && (
           <div className="flex justify-end">
             <button
-              className="p-5 text-2xl text-white"
+              className="p-5 text-2xl"
               onClick={onClose}
               aria-label="Close dialog"
             >
@@ -70,11 +71,10 @@ export const FullDialog = ({ open, onClose, children }: FullDialogProps) => {
         )}
         <div
           ref={dialogRef}
-          className={`w-full px-3 pb-7 h-full overflow-y-auto flex-grow-1 flex flex-col justify-center transition-transform duration-400 ${
-            open
-              ? "scale-100 opacity-100 translate-y-0"
-              : "scale-95 opacity-0 translate-y-3"
-          }`}
+          className={`w-full px-3 pb-3 h-full overflow-y-auto flex-grow-1 flex flex-col justify-center transition-transform duration-400 ${open
+            ? "scale-100 opacity-100 translate-y-0"
+            : "scale-95 opacity-0 translate-y-3"
+            }`}
         >
           {children}
         </div>

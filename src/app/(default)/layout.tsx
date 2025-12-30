@@ -11,7 +11,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex flex-col max-w-md mx-auto items-stretch min-h-screen">
+    <main className="flex flex-col max-w-md mx-auto items-stretch min-h-screen relative">
       {children}
     </main>
   );

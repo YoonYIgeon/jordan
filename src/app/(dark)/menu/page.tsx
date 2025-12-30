@@ -47,9 +47,11 @@ export default function Menu() {
             <ChoreoGraphyWorkshop width={217} height={60} className="mx-auto" />
           </MenuButton>
         </Link>
-        <MenuButton>
-          <ViewInfrared width={171} height={38} className="mx-auto" />
-        </MenuButton>
+        <Link href="/line-up">
+          <MenuButton>
+            <ViewInfrared width={171} height={38} className="mx-auto" />
+          </MenuButton>
+        </Link>
       </div>
     </div>
   );

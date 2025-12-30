@@ -24,6 +24,12 @@ main:not(.dark) {
   --foreground: #ff3b49;
   background: var(--background);
   color: var(--foreground);
+  &.reverse {
+    --background: #ff3b49;
+    --foreground: #000000;
+    background: var(--background);
+    color: var(--foreground);
+  }
 }
 .video-dialog {
   --background: transparent;

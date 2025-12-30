@@ -7,7 +7,7 @@ import { Checkbox } from "./checkbox";
 import Logo from "@/ui/svg/logo.svg";
 import { Link } from "next-view-transitions";
 
-export const ApplicateBattle = ({ }) => {
+export const ApplicateWorkshop = ({ }) => {
   const [open, setOpen] = useState(false);
   const [completed, setCompleted] = useState(false);
 
@@ -19,13 +19,15 @@ export const ApplicateBattle = ({ }) => {
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>배틀 신청하기</Button>
-      <FullDialog reverse open={open} onClose={() => setOpen(false)}>
+      <div className="fixed max-w-md mx-auto absolute bottom-0 left-0 right-0 p-3">
+        <Button className="border-none w-full" onClick={() => setOpen(true)}>워크샵 신청하기</Button>
+      </div>
+      <FullDialog open={open} onClose={() => setOpen(false)}>
         {completed ? (
           <>
             <div className="flex flex-col flex-grow-1 items-center justify-center gap-6">
               <Logo width={100} height={100} />
-              <strong>배틀 신청이 완료되었습니다.</strong>
+              <strong>신청이 완료되었습니다.</strong>
             </div>
             <Link href="/menu">
               <Button>메뉴로 돌아가기</Button>
@@ -33,7 +35,7 @@ export const ApplicateBattle = ({ }) => {
           </>
         ) : (
           <div className="flex flex-col gap-5 flex-grow-1">
-            <h4 className="font-black text-[24px] text-center">배틀 신청서</h4>
+            <h4 className="font-black text-[24px] text-center">워크샵 신청서</h4>
             <div className="flex flex-col border-1">
               <div className="border-b-1 flex justify-between px-1.5 py-1">
                 <div className="font-black text-[20px] whitespace-nowrap">
@@ -77,11 +79,11 @@ export const ApplicateBattle = ({ }) => {
               </div>
               <div className="border-b-1 flex flex-col px-1.5 py-1">
                 <div className="font-black text-[20px] whitespace-nowrap">
-                  인스타그램 아이디
+                  인스타그램 영상 링크
                 </div>
-                <input
+                <textarea
                   className="w-full"
-                  placeholder="인스타그램 아이디를 입력해주세요."
+                  placeholder="인스타그램 영상 링크를 입력해주세요."
                 />
               </div>
               <div className="flex flex-col px-1.5 py-1">
@@ -100,7 +102,7 @@ export const ApplicateBattle = ({ }) => {
               </span>
             </div>
             <div className="flex-grow-1" />
-            <Button reverse onClick={() => setCompleted(true)}>신청하기</Button>
+            <Button onClick={() => setCompleted(true)}>신청하기</Button>
           </div>
         )}
       </FullDialog>

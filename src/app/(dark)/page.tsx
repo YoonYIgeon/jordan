@@ -42,7 +42,7 @@ export default function Home() {
     case 2:
       return (
         <div className="flex flex-grow-1 items-center justify-center relative">
-          <div className="fixed top-0 right-0 p-5">
+          <div className="absolute top-0 right-0 p-5">
             <Logo width={40} />
           </div>
           <video

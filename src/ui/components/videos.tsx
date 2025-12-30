@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { VideoDialog } from "./video-dialog";
 import { Button } from "./button";
+import { ApplicateWorkshop } from "./applicate-workshop";
 
 const Thumbnail = ({ src }: { src: string }) => {
   const [open, setOpen] = useState(false);
@@ -51,17 +52,16 @@ export default function Videos() {
         <ArrowBottom className="size-4 mx-auto" />
       </button>
       {open && (
-        <div className="-mx-3 grid grid-cols-3">
-          {Array.from({ length: 21 }).map((_, index) => {
-            const src = `https://picsum.photos/id/${index + 500}/300/400`;
-            return <Thumbnail src={src} key={index} />;
-          })}
-        </div>
+        <>
+          <div className="-mx-3 grid grid-cols-3">
+            {Array.from({ length: 21 }).map((_, index) => {
+              const src = `https://picsum.photos/id/${index + 500}/300/400`;
+              return <Thumbnail src={src} key={index} />;
+            })}
+          </div>
+          <ApplicateWorkshop />
+        </>
       )}
-
-      <div className="fixed bottom-3 left-3 right-3">
-        <Button className="border-none">워크샵 신청하기</Button>
-      </div>
     </>
   );
 }

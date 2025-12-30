@@ -49,6 +49,7 @@ export default function Home() {
             src="/video/bada_sample.mp4"
             autoPlay
             muted
+            playsInline
             className="w-screen h-screen object-cover"
             onEnded={() => {
               router.push("/menu");

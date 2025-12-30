@@ -9,7 +9,7 @@ export const HistoryBack = () => {
   return (
     <div className="flex p-6 sticky top-0">
       <button
-        className="text-foreground flex items-center justify-centerh-8 size-10 bg-background/50 rounded-full backdrop-blur-sm"
+        className="text-foreground flex items-center justify-centerh-8 size-10 bg-background/50 rounded-full backdrop-blur-[2px]"
         onClick={() => {
           if (window.history.length <= 1) {
             router.replace("/menu");

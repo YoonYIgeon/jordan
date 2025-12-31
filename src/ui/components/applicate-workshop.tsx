@@ -23,8 +23,10 @@ export const ApplicateWorkshop = ({ }) => {
 
   return (
     <>
-      <div className="fixed max-w-md mx-auto absolute bottom-0 left-0 right-0 p-3">
-        <Button className="border-none w-full" onClick={() => setOpen(true)}>워크샵 신청하기</Button>
+      <div className="sticky max-w-md w-full mx-auto absolute bottom-0 left-0 right-0 p-3">
+        <div className="-mx-3">
+          <Button className="border-none" onClick={() => setOpen(true)}>워크샵 신청하기</Button>
+        </div>
       </div>
       <FullDialog open={open} onClose={() => setOpen(false)}>
         {completed ? (

@@ -41,21 +41,12 @@ const Thumbnail = ({ src }: { src: string }) => {
 };
 
 export default function Videos() {
-  const [open, setOpen] = useState(false);
   const [value, setValue] = useState({ label: "최신순", value: "1" });
+  const [videos, setVideos] = useState<number>(9);
 
-  useEffect(() => {
-    if (open) {
-      window.scrollBy({ top: 300, left: 0, behavior: "smooth" });
-    }
-  }, [open]);
 
   return (
     <>
-      {/* <button onClick={() => setOpen(!open)}>
-        <ArrowBottom className="size-4 mx-auto" />
-      </button> */}
-      {/* {open && ( */}
       <div className="flex flex-col gap-2">
         <div className="flex justify-end items-center">
           <Select
@@ -68,14 +59,18 @@ export default function Videos() {
           />
         </div>
         <div className="-mx-3 grid grid-cols-3">
-          {Array.from({ length: 21 }).map((_, index) => {
+          {Array.from({ length: videos }).map((_, index) => {
             const src = `https://picsum.photos/id/${index + 500}/300/400`;
             return <Thumbnail src={src} key={index} />;
           })}
         </div>
+        <div className="py-3 flex justify-center">
+          <button onClick={() => setVideos(videos + 9)}>
+            <ArrowBottom className="size-4 mx-auto" />
+          </button>
+        </div>
         <ApplicateWorkshop />
       </div>
-      {/* )} */}
     </>
   );
 }

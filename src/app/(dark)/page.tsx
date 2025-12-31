@@ -11,20 +11,20 @@ export default function Home() {
   const [transitionState, setTransitionState] = useState<number>(0);
   const router = useTransitionRouter();
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setTransitionState((prev) => {
-  //       if (prev === 2) {
-  //         clearInterval(interval);
-  //         if (process.env.NODE_ENV === "development") router.push("/menu");
-  //         return 2;
-  //       }
-  //       return prev + 1;
-  //     });
-  //   }, 1000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTransitionState((prev) => {
+        if (prev === 2) {
+          clearInterval(interval);
+          if (process.env.NODE_ENV === "development") router.push("/menu");
+          return 2;
+        }
+        return prev + 1;
+      });
+    }, 1000);
 
-  //   return () => clearInterval(interval);
-  // }, []);
+    return () => clearInterval(interval);
+  }, []);
 
   switch (transitionState) {
     case 0:

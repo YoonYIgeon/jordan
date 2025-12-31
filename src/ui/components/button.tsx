@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { jordan } from "../font";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   reverse?: boolean;
@@ -18,6 +19,7 @@ export const Button = ({
           : "bg-[#FF3B49] text-black border-1 border-black",
         "w-full min-h-10 py-1.5 leading-[1]",
         "text-center text-[24px] font-black",
+        jordan.className,
         className
       )}
       {...props}

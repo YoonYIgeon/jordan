@@ -1,14 +1,17 @@
+import { jordan } from "@/ui/font";
+import clsx from "clsx";
+
 export default function BasicInformation() {
   return (
     <div className="flex flex-col">
       <div className="flex flex-col gap-1.5">
         <div className="flex flex-col gap-1 text-center font-black border-b-1 pb-2">
           <span className="text-[15px] leading-[1]">일시</span>
-          <span className="text-[30px] leading-[29px]">2026.2.7</span>
+          <span className={clsx("text-[30px] leading-[29px]", jordan.className)}>2026.2.7</span>
         </div>
         <div className="flex flex-col gap-1 text-center font-black border-b-1 pb-2">
           <span className="text-[15px] leading-[1]">장소</span>
-          <span className="text-[30px] leading-[29px]">FUTURA SEOUL</span>
+          <span className={clsx("text-[30px] leading-[29px]", jordan.className)}>FUTURA SEOUL</span>
         </div>
       </div>
       <p className="py-8 text-[13px] font-semibold whitespace-pre-wrap break-keep text-center">

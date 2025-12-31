@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import localFont from "next/font/local";
 import { ViewTransitions } from "next-view-transitions";
 
-const pretendard = localFont({
-  src: "../fonts/PretendardVariable.woff2",
-  variable: "--font-pretendard",
-  weight: "100 900",
-  display: "swap",
-});
+import { pretendard } from "@/ui/font";
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${pretendard.variable} antialiased`}>
+      <body className={`${pretendard.variable}`}>
         <ViewTransitions>{children}</ViewTransitions>
       </body>
     </html>

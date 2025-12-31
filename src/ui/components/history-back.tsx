@@ -7,7 +7,7 @@ export const HistoryBack = () => {
   const router = useTransitionRouter();
 
   return (
-    <div className="flex p-6 sticky top-0">
+    <div className="flex p-6">
       <button
         className="text-foreground flex items-center justify-centerh-8 size-10 bg-background/50 rounded-full backdrop-blur-[2px]"
         onClick={() => {

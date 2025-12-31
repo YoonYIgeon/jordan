@@ -6,6 +6,8 @@ import Logo from "@/ui/svg/logo.svg";
 import { Button } from "@/ui/components/button";
 import { Link } from "next-view-transitions";
 import BasicInformation from "@/ui/components/basic-information";
+import clsx from "clsx";
+import { jordan } from "@/ui/font";
 
 const programs = [
   { id: 1, name: "배틀", times: "11:00 - 14:30" },
@@ -34,7 +36,7 @@ export default function IrlInfo() {
             <div className="flex flex-col">
               {programs.map((program) => (
                 <div
-                  className="border-b flex gap-6 px-4 py-3 text-[15px] items-center"
+                  className={clsx("border-b flex gap-6 px-4 py-3 text-[15px] items-center", jordan.className)}
                   key={program.id}
                 >
                   <div className="font-medium">0{program.id}</div>

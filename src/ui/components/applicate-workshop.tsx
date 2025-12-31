@@ -6,6 +6,10 @@ import { FullDialog } from "./full-dialog";
 import { Checkbox } from "./checkbox";
 import Logo from "@/ui/svg/logo.svg";
 import { Link } from "next-view-transitions";
+import { Input } from "./input";
+import { Textarea } from "./textarea";
+import clsx from "clsx";
+import { jordan } from "../font";
 
 export const ApplicateWorkshop = ({ }) => {
   const [open, setOpen] = useState(false);
@@ -41,9 +45,8 @@ export const ApplicateWorkshop = ({ }) => {
                 <div className="font-black text-[20px] whitespace-nowrap">
                   이름
                 </div>
-                <input
+                <Input
                   type="text"
-                  className="w-full text-right"
                   placeholder="이름을 입력해주세요."
                 />
               </div>
@@ -51,9 +54,8 @@ export const ApplicateWorkshop = ({ }) => {
                 <div className="font-black text-[20px] whitespace-nowrap">
                   생년월일
                 </div>
-                <input
+                <Input
                   type="text"
-                  className="w-full text-right"
                   placeholder="생년월일을 입력해주세요."
                 />
               </div>
@@ -61,9 +63,8 @@ export const ApplicateWorkshop = ({ }) => {
                 <div className="font-black text-[20px] whitespace-nowrap">
                   휴대폰
                 </div>
-                <input
+                <Input
                   type="text"
-                  className="w-full text-right"
                   placeholder="휴대폰을 입력해주세요."
                 />
               </div>
@@ -71,9 +72,8 @@ export const ApplicateWorkshop = ({ }) => {
                 <div className="font-black text-[20px] whitespace-nowrap">
                   배틀 장르
                 </div>
-                <input
+                <Input
                   type="text"
-                  className="w-full text-right"
                   placeholder="배틀 장르를 입력해주세요."
                 />
               </div>
@@ -81,16 +81,15 @@ export const ApplicateWorkshop = ({ }) => {
                 <div className="font-black text-[20px] whitespace-nowrap">
                   인스타그램 영상 링크
                 </div>
-                <textarea
-                  className="w-full"
+                <Textarea
                   placeholder="인스타그램 영상 링크를 입력해주세요."
                 />
               </div>
               <div className="flex flex-col px-1.5 py-1">
-                <div className="font-black text-[20px] whitespace-nowrap">
+                <div className={clsx("font-black text-[20px] whitespace-nowrap", jordan.className)}>
                   WHAT DO YOU WANT
                 </div>
-                <textarea className="w-full" placeholder="WHAT DO YOU WANT" />
+                <Textarea placeholder="WHAT DO YOU WANT" />
               </div>
             </div>
             <div className="flex flex-col">

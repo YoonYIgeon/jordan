@@ -139,8 +139,7 @@ export default function IrlInfo() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-3">
-          <ApplicateBattle />
+        <div className="flex flex-col gap-3 overflow-visible">
           <Link href="/workshop">
             <Button reverse>
               CHOREOGRAPHY
@@ -149,6 +148,9 @@ export default function IrlInfo() {
             </Button>
           </Link>
         </div>
+      </div>
+      <div className="sticky bottom-3 mt-3 mx-3">
+        <ApplicateBattle />
       </div>
     </div>
   );

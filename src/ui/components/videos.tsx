@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { VideoDialog } from "./video-dialog";
 import { Button } from "./button";
 import { ApplicateWorkshop } from "./applicate-workshop";
+import { Select } from "./select";
 
 const Thumbnail = ({ src }: { src: string }) => {
   const [open, setOpen] = useState(false);
@@ -24,12 +25,14 @@ const Thumbnail = ({ src }: { src: string }) => {
       </div>
       <VideoDialog open={open} onClose={() => setOpen(false)}>
         <div className="aspect-[320/498]">
-          <Image
-            src={src}
-            alt="video"
-            className="w-full h-full object-cover"
-            width={320}
-            height={498}
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.instagram.com/reel/DS12_3LkXij/embed"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            className="w-full h-full rounded"
+            style={{ border: "none" }}
           />
         </div>
       </VideoDialog>
@@ -39,6 +42,7 @@ const Thumbnail = ({ src }: { src: string }) => {
 
 export default function Videos() {
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState({ label: "최신순", value: "1" });
 
   useEffect(() => {
     if (open) {
@@ -48,20 +52,30 @@ export default function Videos() {
 
   return (
     <>
-      <button onClick={() => setOpen(!open)}>
+      {/* <button onClick={() => setOpen(!open)}>
         <ArrowBottom className="size-4 mx-auto" />
-      </button>
-      {open && (
-        <>
-          <div className="-mx-3 grid grid-cols-3">
-            {Array.from({ length: 21 }).map((_, index) => {
-              const src = `https://picsum.photos/id/${index + 500}/300/400`;
-              return <Thumbnail src={src} key={index} />;
-            })}
-          </div>
-          <ApplicateWorkshop />
-        </>
-      )}
+      </button> */}
+      {/* {open && ( */}
+      <div className="flex flex-col gap-2">
+        <div className="flex justify-end items-center">
+          <Select
+            options={[
+              { label: "최신순", value: "1" },
+              { label: "좋아요 많은 순", value: "2" },
+            ]}
+            value={value}
+            onChange={setValue}
+          />
+        </div>
+        <div className="-mx-3 grid grid-cols-3">
+          {Array.from({ length: 21 }).map((_, index) => {
+            const src = `https://picsum.photos/id/${index + 500}/300/400`;
+            return <Thumbnail src={src} key={index} />;
+          })}
+        </div>
+        <ApplicateWorkshop />
+      </div>
+      {/* )} */}
     </>
   );
 }

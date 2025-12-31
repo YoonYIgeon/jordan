@@ -7,8 +7,10 @@ import { Checkbox } from "./checkbox";
 import Logo from "@/ui/svg/logo.svg";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
+import clsx from "clsx";
+import { jordan } from "../font";
 
-export const Event = ({}) => {
+export const Event = ({ }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -38,11 +40,11 @@ export const Event = ({}) => {
           <div className="flex flex-col gap-1.5">
             <div className="flex flex-col gap-1 text-center font-black border-t-4 border-b-1 pb-2 pt-1.5">
               <span className="text-[15px] leading-[1]">일시</span>
-              <span className="text-[24px] leading-[1]">2026.1.21-1.27</span>
+              <span className={clsx("text-[24px] leading-[1]", jordan.className)}>2026.1.21-1.27</span>
             </div>
             <div className="flex flex-col gap-1 text-center font-black border-b-1 pb-2">
               <span className="text-[15px] leading-[1]">장소</span>
-              <span className="text-[24px] leading-[1]">
+              <span className={clsx("text-[24px] leading-[1]", jordan.className)}>
                 조던 월드오브플라이트 홍대
               </span>
             </div>

@@ -31,9 +31,17 @@ main:not(.dark) {
     color: var(--foreground);
   }
 }
+
 .video-dialog {
   --background: transparent;
   background: var(--background);
+}
+
+@supports (-webkit-touch-callout: none) {
+  .font-black {
+    font-weight: 900;
+    -webkit-text-stroke: 1px currentColor;
+  }
 }
 
 body {
